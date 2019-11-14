@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1.邮箱后缀补全</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <input type="text" v-model="msg" />              
+        <div v-if="emailList.length > 0">
+            <div v-for="item in emailList">
+                {{item}}
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        var vm = new Vue({
+            el: "#root",
+            data: {
+                suffixList: ['@sohu.com', '@qq.com', '@163.com'],
+                msg: '',
+            },
+            methods: {
+            },
+            computed: {
+                emailList() {
+                    if (!this.msg)
+                        return [];
+                    return this.suffixList.map((item) => {
+                        return this.msg + item;
+                    })
+                }
+            },
+        });
+    </script>
+</body>
+</html>

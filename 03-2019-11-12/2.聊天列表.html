@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1.聊天列表</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <div>2.聊天列表</div>
+        <div v-for="item in list">
+            {{item}}
+        </div>
+        <div>
+            <input type="text" v-model="message" @change.enter="sendMessage"/>
+            <button @click="sendMessage">发言</button>
+        </div>
+    </div>
+    
+    <script>
+        var vm = new Vue({
+            el: "#root",
+            data: {
+                list: [],
+                message: "",
+            },
+            methods: {
+                sendMessage() {
+                    this.list.push(this.message);
+                    this.message = "";
+                }
+            },
+        });
+    </script>
+</body>
+</html>
